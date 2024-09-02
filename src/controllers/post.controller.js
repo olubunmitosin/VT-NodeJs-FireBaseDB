@@ -74,10 +74,19 @@ exports.createPost = async (req, res) => {
     try {
         const data = req.body;
         // Create new post
-        await addDoc(collection(db, 'posts'), data);
-        responseMessage = "Post created successfully";
-        statusValue = true;
+        const post  = await addDoc(collection(db, 'posts'), data);
+        const newPost = doc(db, 'posts', post.id);
+        const newPostData = await getDoc(newPost);
 
+        if (newPostData.exists()) { 
+            responseData = newPostData.data();
+            responseData.id = post.id;
+            responseMessage = "Post created successfully";
+            statusValue = true;
+        } else {
+            responseMessage = "Post created not found!"
+        }
+       
     } catch (e) {
         responseMessage = "An error occurred";
         error = errorLog(e);
@@ -108,7 +117,6 @@ exports.updatePost = async (req, res) => {
 
     // Try block
     try {
-        
         const data = req.body;
         const id = data.id;
         const post = doc(db, 'posts', id);
@@ -116,6 +124,7 @@ exports.updatePost = async (req, res) => {
         // update post
         await updateDoc(post, data);
 
+        responseData = data;
         responseMessage = "Post updated successfully!"
         statusValue = true;
 
@@ -148,12 +157,11 @@ exports.getSinglePost = async (req, res) => {
         // Create new post
         const post = doc(db, 'posts', id);
         const data = await getDoc(post);
-        if (data.exists()) {
 
+        if (data.exists()) {
             responseMessage = "Query ok!";
             responseData = data.data();
             statusValue = true;
-
         } else {
             responseMessage = "Post not found!";
         }

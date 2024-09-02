@@ -13,6 +13,7 @@ app.use(session({secret: 'grant', saveUninitialized: true, resave: false}));
 // Set global base dir
 global.__basedir = __dirname;
 
+
 // Set cors options
 let corsOptions = {
   origin: '*'
