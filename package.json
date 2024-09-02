@@ -1,0 +1,42 @@
+{
+  "name": "virtual-tribe-nodejs",
+  "version": "1.0.0",
+  "description": "Backend for Blog application with Firebase No SQL DB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "watch": "nodemon src/server.js",
+    "test": "jest test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olubunmitosin/VT-NodeJs-FireBaseDB.git"
+  },
+  "keywords": [
+    "nodejs",
+    "firebasedb",
+    "nosql"
+  ],
+  "author": "Victor Olubunmi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olubunmitosin/VT-NodeJs-FireBaseDB/issues"
+  },
+  "homepage": "https://github.com/olubunmitosin/VT-NodeJs-FireBaseDB#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "firebase": "^10.13.1",
+    "locutus": "^2.0.32",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1",
+    "nocache": "^4.0.0",
+    "node-input-validator": "^4.5.1"
+  }
+}
